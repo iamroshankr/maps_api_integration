@@ -1,0 +1,8 @@
+.container {
+    margin-top: 33px;
+    align-items: center;
+}
+
+.container > div {
+    padding: 20px 50px;
+}
