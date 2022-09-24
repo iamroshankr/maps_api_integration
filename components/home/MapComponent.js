@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+// import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
-// import Image from "next/image";
+import Image from "next/image";
 
-const center = { lat: 28.53999198480272, lng: 77.16577169607818 };
+// const center = { lat: 28.53999198480272, lng: 77.16577169607818 };
 
 const MapComponent = () => {
 
@@ -15,10 +15,10 @@ const MapComponent = () => {
 
     return (
         <Box>
-            {/* <Image src='/images/card.png' alt='mapImage' height={511} width={560} /> */}
-            <GoogleMap center={center} zoom={12} mapContainerStyle={{width: '100%', height: '100%'}}>
+            <Image src='/images/card.png' alt='mapImage' height={511} width={560} />
+            {/* <GoogleMap center={center} zoom={12} mapContainerStyle={{width: '100%', height: '100%'}}>
 
-            </GoogleMap>
+            </GoogleMap> */}
         </Box>
     );
 };
