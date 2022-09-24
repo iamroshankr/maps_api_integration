@@ -6,3 +6,72 @@
 .container > div {
     padding: 20px 50px;
 }
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+.resultBox {
+    display: block;
+}
+
+.inputWrapper {
+    padding: 20px 15px;
+}
+
+.inputBox {
+    align-items: center;
+    padding: 5px;
+    display: flex;
+    border: 1px solid #c4c2c2;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.inputBox input {
+    margin-left: 6px;
+    color: #4D6475;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.btnBox {
+    padding: 10px;
+    text-align: right;
+}
+
+.calculate {
+    margin-top: 10px;
+    width: 141px;
+    height: 62px;
+    text-transform: none;
+    font-weight: 600;
+    border-radius: 32px;
+    color: #FFFFFF;
+    background: #1B31A8;
+}
+
+.resBox {
+    border: 1px solid #c4c2c2;
+    border-radius: 5px;
+}
+
+.resVal {
+    display: flex;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+.distVal {
+    margin-left: auto;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0079FF;
+}
+
+.resText {
+    padding: 35px 10px !important;
+}
