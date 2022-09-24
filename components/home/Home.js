@@ -1,9 +1,60 @@
 import { useState, useRef } from "react";
-import { Box, Grid, Typography, InputBase, Button } from "@mui/material";
+import { Box, Grid, Typography, InputBase, Button, styled } from "@mui/material";
 import { GoogleMap, useJsApiLoader, Marker, Autocomplete, DirectionsRenderer } from "@react-google-maps/api";
 
 import Image from "next/image";
-import classes from './Home.module.css';
+
+const InputContainer = styled(Box)`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 25px;
+`;
+
+const InputBox = styled(Box)`
+    align-items: center;
+    padding: 5px;
+    display: flex;
+    border: 1px solid #c4c2c2;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+`;
+
+const InputSearchBase = styled(InputBase)`
+    margin-left: 6px;
+    color: #4D6475;
+    font-size: 20px;
+    font-weight: 600;
+`;
+
+const StyledButton = styled(Button)`
+    margin-top: 10px;
+    width: 141px;
+    height: 62px;
+    text-transform: none;
+    font-weight: 600;
+    border-radius: 32px;
+    color: #FFFFFF;
+    background: #1B31A8;
+`;
+
+const ResultBox = styled(Box)`
+    border: 1px solid #c4c2c2;
+    border-radius: 8px;
+`;
+
+const ResVal = styled(Box)`
+    display: flex;
+    background-color: #FFFFFF;
+    padding: 20px;
+`;
+
+const DistVal = styled(Box)`
+    margin-left: auto;
+    font-size: 30px;
+    font-weight: 600;
+    color: #0079FF;
+`;
 
 const center = { lat: 28.53999198480272, lng: 77.16577169607818 };
 const libs = ['places'];
@@ -44,72 +95,72 @@ const Home = ({ api_key }) => {
     }
 
     return (
-        <Grid container className={classes.container} >
+        <Grid container style={{ marginTop: 33, alignItems: 'center' }} >
 
-            <Grid item lg={6} md={6} sm={12} xs={12} >
-                <Box className={classes.inputContainer}>
+            <Grid item lg={6} md={6} sm={12} xs={12} style={{ padding: '20px 50px' }} >
+                <InputContainer>
 
                     <Box>
-                        <Box className={classes.inputWrapper} >
+                        <Box style={{ padding: '20px 15px' }} >
                             <Typography style={{ fontSize: 14, marginBottom: 5 }} >Origin</Typography>
 
-                            <Box className={classes.inputBox} >
+                            <InputBox >
                                 <Image src='/images/place.png' alt='location' height={27} width={24} />
                                 <Autocomplete>
-                                    <InputBase placeholder='Origin' inputRef={originRef} />
+                                    <InputSearchBase placeholder='Origin' inputRef={originRef} />
                                 </Autocomplete>
-                            </Box>
+                            </InputBox>
                         </Box>
 
-                        <Box className={classes.inputWrapper} >
+                        <Box style={{ padding: '20px 15px' }} >
                             <Typography style={{ fontSize: 14, marginBottom: 5 }} >Destination</Typography>
 
-                            <Box className={classes.inputBox} >
+                            <InputBox >
                                 <Image src='/images/place.png' alt='location' height={27} width={24} />
                                 <Autocomplete>
-                                    <InputBase placeholder='Destination' inputRef={destRef} />
+                                    <InputSearchBase placeholder='Destination' inputRef={destRef} />
                                 </Autocomplete>
-                            </Box>
+                            </InputBox>
                         </Box>
                     </Box>
 
-                    <Box className={classes.btnBox}>
-                        <Button className={classes.calculate} variant="contained" onClick={calculateDistance}>Calculate</Button>
+                    <Box style={{ padding: 10, textAlign: 'right' }}>
+                        <StyledButton variant="contained" onClick={calculateDistance}>Calculate</StyledButton>
                     </Box>
 
-                </Box>
+                </InputContainer>
 
-                <Box className={classes.resBox}>
-                    <Box className={classes.resVal}>
+                <ResultBox>
+                    <ResVal>
                         <Box style={{ fontSize: 20 }} >Distance</Box>
                         {
                             distance === '' ?
-                                <Box className={classes.distVal} >--</Box> :
-                                <Box className={classes.distVal} >{distance}</Box>
+                                <DistVal>--</DistVal> :
+                                <DistVal>{distance}</DistVal>
                         }
-                    </Box>
-                    <Box className={classes.resVal}>
+                    </ResVal>
+                    <ResVal>
                         <Box style={{ fontSize: 20 }} >Estimated Duration</Box>
                         {
                             eta === '' ?
-                                <Box className={classes.distVal} >--</Box> :
-                                <Box className={classes.distVal} >{eta}</Box>
+                                <DistVal>--</DistVal> :
+                                <DistVal>{eta}</DistVal>
                         }
 
-                    </Box>
+                    </ResVal>
                     {
                         originRef.current && destRef.current ?
-                            <Box className={classes.resText}>
+                            <Box style={{padding: '35px 10px'}} >
                                 The distance between <b>{originRef.current.value}</b> and <b>{destRef.current.value}</b> is <b>{distance}</b>.
                             </Box> :
-                            <Box className={classes.resText}>
+                            <Box style={{padding: '35px 10px'}} >
                                 The distance between <b> -- </b> and <b> -- </b> is <b> -- </b>.
                             </Box>
                     }
-                </Box>
+                </ResultBox>
             </Grid>
 
-            <Grid item lg={6} md={6} sm={12} xs={12} >
+            <Grid item lg={6} md={6} sm={12} xs={12} style={{ padding: '20px 50px' }} >
                 <GoogleMap
                     center={center}
                     zoom={15}

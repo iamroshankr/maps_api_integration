@@ -1,16 +1,19 @@
-import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, Toolbar, styled } from "@mui/material";
 import Image from "next/image";
 
-import classes from './Header.module.css';
+const StyledHeader = styled(AppBar)`
+    background: #FFFFFF;
+    height: 80px;
+`;
 
 const Header = () => {
 
     return (
-        <AppBar className={classes.styledHeader}>
+        <StyledHeader>
             <Toolbar style={{ minHeight: 80 }}>
-                <Image className="logo" src="/images/graviti_logo.png" alt="logo" width={160} height={69} />
+                <Image src="/images/graviti_logo.png" alt="logo" width={160} height={69} />
             </Toolbar>
-        </AppBar>
+        </StyledHeader>
     );
 
 };
